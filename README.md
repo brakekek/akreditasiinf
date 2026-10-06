@@ -59,6 +59,39 @@ php artisan serve
 
 Buka http://127.0.0.1:8000 (atau `http://akreditasi.test` bila memakai Laragon).
 
+### Alternatif: import database dari file SQL
+
+Repositori ini menyertakan hasil export database di `database/akreditasi.sql`, berisi struktur semua tabel beserta data kriteria, isi kriteria, dan pengguna. Gunakan cara ini **sebagai pengganti** `php artisan migrate` dan `db:seed` di atas.
+
+1. Buat database kosong:
+
+   ```bash
+   mysql -u root -p -e "CREATE DATABASE akreditasi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+   ```
+
+2. Import file SQL:
+
+   ```bash
+   mysql -u root -p akreditasi < database/akreditasi.sql
+   ```
+
+   Di Laragon, jalankan perintah di atas dari *Terminal* Laragon (pengguna `root` tanpa kata sandi, jadi `-p` boleh dihilangkan). Bisa juga lewat phpMyAdmin/HeidiSQL: pilih database `akreditasi` → *Import* → pilih `database/akreditasi.sql`.
+
+3. Lanjutkan dengan:
+
+   ```bash
+   php artisan storage:link
+   php artisan serve
+   ```
+
+Login memakai akun yang ada di database hasil import. Berkas unggahan (dokumen pendukung, gambar narasi) tidak ikut di file SQL; salin folder `storage/app/` dari server asal bila diperlukan.
+
+Untuk memperbarui file export dari database lokal:
+
+```bash
+mysqldump -u root --routines --triggers --no-tablespaces akreditasi > database/akreditasi.sql
+```
+
 ### Akun admin awal
 
 | Email               | Kata sandi         |
@@ -105,6 +138,7 @@ app/Support/            Helper DataInduk, Lkps, SumberDokumen
 app/Models/             Kriteria, IsiKriteria, Dokumen, User
 database/migrations/    Tabel akreditasi & LKPS
 database/seeders/       AdminSeeder
+database/akreditasi.sql Export database (struktur + data)
 resources/views/        Blade view per modul
 routes/web.php          Definisi rute
 ```
