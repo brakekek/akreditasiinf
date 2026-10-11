@@ -16,6 +16,57 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `cache`
+--
+
+DROP TABLE IF EXISTS `cache`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cache` (
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` bigint NOT NULL,
+  PRIMARY KEY (`key`),
+  KEY `cache_expiration_index` (`expiration`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cache`
+--
+
+LOCK TABLES `cache` WRITE;
+/*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+INSERT INTO `cache` VALUES ('3a401a99c9927d0805825957b377f5b4ad9d2d67','i:1;',1791680585),('3a401a99c9927d0805825957b377f5b4ad9d2d67:timer','i:1791680585;',1791680585),('42fbbabb8aefc44ecac61d593b28bf6412fbc944','i:1;',1791619478),('42fbbabb8aefc44ecac61d593b28bf6412fbc944:timer','i:1791619478;',1791619478),('da204e69f6ec8c73c657fd1fbc4ad91914ab1624','i:1;',1791310837),('da204e69f6ec8c73c657fd1fbc4ad91914ab1624:timer','i:1791310837;',1791310837),('ee454b8e15a8e1a01093f2a9d7ec7397a85dd3b7','i:1;',1791358993),('ee454b8e15a8e1a01093f2a9d7ec7397a85dd3b7:timer','i:1791358993;',1791358993),('f85347339a2a6be407aef5a3b3795870ff4ee2c9','i:1;',1791369650),('f85347339a2a6be407aef5a3b3795870ff4ee2c9:timer','i:1791369650;',1791369650);
+/*!40000 ALTER TABLE `cache` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cache_locks`
+--
+
+DROP TABLE IF EXISTS `cache_locks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` bigint NOT NULL,
+  PRIMARY KEY (`key`),
+  KEY `cache_locks_expiration_index` (`expiration`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cache_locks`
+--
+
+LOCK TABLES `cache_locks` WRITE;
+/*!40000 ALTER TABLE `cache_locks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cache_locks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `data_induk_dokumen`
 --
 
@@ -82,6 +133,36 @@ INSERT INTO `dokumen` VALUES (88,15,'1. Kepmen no 42 a o 2025 - Ijin Univ Tiga S
 UNLOCK TABLES;
 
 --
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`),
+  KEY `failed_jobs_connection_queue_failed_at_index` (`connection`,`queue`,`failed_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `isi_kriteria`
 --
 
@@ -111,6 +192,66 @@ LOCK TABLES `isi_kriteria` WRITE;
 /*!40000 ALTER TABLE `isi_kriteria` DISABLE KEYS */;
 INSERT INTO `isi_kriteria` VALUES (15,1,'1.A','Ketersediaan dokumen Penetapan standar dan indikatornya.','<p>Universitas Tiga Serangkai merupakan institusi hasil penggabungan antara STMIK Sinar Nusantara dan Akademi Seni dan Desain Indonesia (ASDI), sebagaimana ditetapkan melalui Keputusan Menteri Pendidikan Tinggi, Sains, dan Teknologi Nomor 42/A/O/2025 tertanggal 10 Januari 2025. Sejalan dengan transformasi kelembagaan tersebut, Program Studi S1 Informatika yang semula berada di bawah naungan STMIK Sinar Nusantara kini resmi beroperasi di bawah Fakultas Teknik Universitas Tiga Serangkai.<br />Secara historis, program studi ini mulai diselenggarakan pada tahun 2001 dengan nama Teknik Informatika (S1) berdasarkan SK Nomor 173/D/O/2001. Dalam perkembangannya, guna menyesuaikan dengan dinamika nomenklatur pendidikan tinggi, nama tersebut bertransformasi menjadi Program Studi Informatika melalui SK Nomor 890/KPT/I/2019.<br />Pasca-perubahan bentuk kelembagaan, Program Studi S1 Informatika berkomitmen melakukan penguatan tata kelola serta akselerasi pelaksanaan Tri Dharma Perguruan Tinggi, baik secara kualitas maupun kuantitas. Upaya ini diwujudkan melalui evaluasi diri berkala yang berpedoman pada Sistem Penjaminan Mutu Internal (SPMI). Kebijakan ini merupakan pengembangan dari dokumen SPMI STMIK Sinar Nusantara yang telah diperbarui menjadi Dokumen SPMI Universitas Tiga Serangkai, khususnya pada standar Tata Pamong, Tata Kelola, dan Kerja Sama.</p>\n<p>Implementasi penjaminan mutu tersebut diperkuat secara yuridis melalui pembentukan Lembaga Penjaminan Mutu (LPM) tingkat universitas berdasarkan Keputusan Rektor Nomor 038.A/SK/REK/I/2025, pengelola Unit Mutu di tingkat Fakultas dan Gugus Mutu di tingkat Prodi berdasarkan Keputusan Rektor Nomor 108.A/SK/REK/III/2025.</p>\n<p>Instrumen SPMI ditetapkan melalui Keputusan Rektor Nomor 032.A/SK/REK/X/2025 tentang Penetapan Dokumen SPMI Universitas Tiga Serangkai, yang mencakup pengesahan atas:<br />1. Kebijakan Sistem Penjaminan Mutu Internal;<br />2. Standar Sistem Penjaminan Mutu Internal;<br />2.1. Standar Pendidikan;<br />2.2. Standar Penelitian; <br />2.3. Standar Pengabdian kepada Masyarakat<br />3. Tata Cara Pendokumentasian Sistem Penjaminan Mutu Internal; <br />4. Pedoman Sistem Penjaminan Mutu Internal.</p>',90,'2026-10-05 02:03:04','2026-10-11 08:53:29'),(35,2,'2.A','Jumlah dosen tetap (homebase). \r\nJumlah minimal dosen tetap prodi (homebase) = 5.','<p>Pada tahun 2024, Program Studi S1 Informatika memiliki 10 dosen homebase dengan latar belakang keilmuan di bidang Informatika dan Komputer (INFOKOM). Dalam upaya membenahi tata kelola serta meningkatkan pelaksanaan Tri Dharma Perguruan Tinggi, baik dari aspek kualitas maupun kuantitas, program studi secara berkelanjutan melakukan penataan dan penguatan sumber daya dosen.</p>\n<p>Pada tahun 2025, jumlah dosen homebase tercatat sebanyak 9 orang, dengan seluruhnya tetap memiliki kesesuaian keilmuan di bidang INFOKOM. Penyesuaian jumlah dosen tersebut dilakukan sebagai bagian dari optimalisasi sumber daya manusia untuk mendukung efektivitas penyelenggaraan pendidikan, penelitian, dan pengabdian kepada masyarakat.</p>',90,'2026-10-05 02:21:42','2026-10-11 08:50:15'),(50,3,'3.A','Rasio jumlah judul penelitian atau penelitian terapan bidang INFOKOM terhadap jumlah DTPR per tahun.','<p>Pada TS-3 (2022), keterlibatan DTPR dalam penelitian bidang INFOKOM mulai menunjukkan kontribusi yang terukur terhadap pengembangan keilmuan program studi.<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Didik Nugroho, S.Kom, M.Kom<br />3. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />Sebanyak 3 dari 15 DTPR (26,67%) terlibat dalam 4 kegiatan penelitian bidang INFOKOM. Capaian ini menjadi dasar penguatan budaya riset pada tahun-tahun berikutnya.</p>\n<p>Pada TS-2 (2023), terjadi peningkatan partisipasi DTPR dalam kegiatan penelitian bidang INFOKOM dibandingkan tahun sebelumnya.<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Iwan Ady Prabowo, S.Kom, M.Kom<br />3. Paulus Harsadi, S.Kom, M.Kom  <br />4. Dwi Remawati, S.Kom, M.Kom<br />5. Dr. Ir. Muhammad Hasbi, M.Kom<br />6. Dziky Ridhwanullah, S.Kom., M.Kom.<br />Sebanyak 6 dari 17 DTPR (35,29%) terlibat dalam 6 kegiatan penelitian bidang INFOKOM. Peningkatan ini menunjukkan adanya perkembangan positif dalam produktivitas dan keterlibatan dosen dalam penelitian.</p>\n<p>Pada TS-1 (2024), partisipasi DTPR dalam penelitian bidang INFOKOM semakin meningkat secara signifikan baik dari sisi jumlah dosen maupun jumlah penelitian.<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Didik Nugroho, S.Kom, M.Kom<br />3. Iwan Ady Prabowo, S.Kom, M.Kom<br />4. Dwi Remawati, S.Kom, M.Kom   <br />5. Sri Siswanti, S.Kom, M.Kom<br />6. Dziky Ridhwanullah, S.Kom., M.Kom.<br />7. Bayu Dwi Raharja, S.Kom, M.Kom.<br />Sebanyak 7 dari 19 DTPR (52,63%) terlibat dalam 10 kegiatan penelitian bidang INFOKOM. Capaian ini mencerminkan penguatan budaya riset serta meningkatnya komitmen dosen dalam pengembangan keilmuan.</p>\n<p>Pada TS (2025), keterlibatan DTPR dalam penelitian bidang INFOKOM menunjukkan peningkatan yang sangat signifikan dibandingkan tahun-tahun sebelumnya.<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Didik Nugroho, S.Kom, M.Kom<br />3. Hendro Wijayanto, S.Kom, M.Kom<br />4. Iwan Ady Prabowo, S.Kom, M.Kom<br />5. Paulus Harsadi, S.Kom, M.Kom  <br />6.  Sri Tomo, S.T, M.Kom <br />7. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />8. Teguh Susyanto,S.Kom, M.Cs    <br />9. Sri Siswanti, S.Kom, M.Kom<br />10. Dr. Ir. Muhammad Hasbi, M.Kom<br />11. Dziky Ridhwanullah, S.Kom., M.Kom.<br />12. Bayu Dwi Raharja, S.Kom, M.Kom.<br />Sebanyak 12 dari 18 DTPR (66,67%) terlibat dalam 12 kegiatan penelitian bidang INFOKOM. Peningkatan rasio ini menunjukkan konsistensi program studi dalam mendorong produktivitas penelitian serta memperkuat daya saing akademik pada bidang INFOKOM.</p>\n<p>Rata-rata rasio jumlah judul penelitian bidang INFOKOM terhadap jumlah DTPR per tahun adalah sebesar 45,31%.</p>\n<p> </p>',90,'2026-10-05 02:42:02','2026-10-11 08:53:47'),(65,5,'5.A','Struktur Organisasi dan Tata Kelola','<p>Secara struktural, Program Studi S1 Informatika berada di bawah koordinasi Fakultas Teknik sebagai Unit Pengelola Program Studi (UPPS) di lingkungan Universitas Tiga Serangkai yang dipimpin oleh Dekan. Landasan penyelenggaraan organisasi dan tata kelola mengacu pada STATUTA Universitas Tiga Serangkai berdasarkan Keputusan Nomor 31.7/YAA.TSU/SK/I/2025. Adapun struktur organisasi, tugas pokok, fungsi, serta mekanisme koordinasi setiap unit kerja diatur dalam dokumen Organisasi dan Tata Kelola Universitas Tiga Serangkai yang disahkan melalui Keputusan Rektor Nomor 074.A/PR/REK/I/2025. Informasi terkait kelembagaan dan penyelenggaraan program studi dapat diakses melalui laman resmi Universitas Tiga Serangkai (https://tsu.ac.id/), Fakultas Teknik (https://teknik.tsu.ac.id/), dan Program Studi S1 Informatika (https://teknik.tsu.ac.id/studiInformatika).</p>\n<p>Dalam pelaksanaan tata kelola, Program Studi S1 Informatika menerapkan prinsip akuntabilitas, transparansi, efektivitas, efisiensi, dan keberlanjutan guna menjamin mutu penyelenggaraan tridharma perguruan tinggi. Seluruh proses akademik dan nonakademik dilaksanakan berdasarkan dokumen perencanaan dan pengendalian mutu yang meliputi Rencana Strategis (Renstra), Rencana Operasional (Renop), Rencana Kerja dan Anggaran Tahunan (RKAT), Pedoman Akademik, Standar Operasional Prosedur (SOP), serta kebijakan Sistem Penjaminan Mutu Internal (SPMI) yang berlaku di tingkat universitas maupun fakultas. Melalui tata kelola tersebut, Program Studi S1 Informatika berkomitmen untuk mewujudkan pengelolaan program studi yang profesional, terukur, dan berorientasi pada peningkatan mutu secara berkelanjutan.</p>',100,'2026-10-05 03:01:11','2026-10-09 09:53:43'),(84,4,'4.A','Rasio jumlah kegiatan PkM bidang INFOKOM terhadap jumlah DTPR per tahun.','<p>Pada TS-2 (2022), dari total 15 Dosen Tetap Program Studi (DTPR), sebanyak 5 dosen pada bidang INFOKOM melaksanakan kegiatan Pengabdian kepada Masyarakat (PkM) yang didanai melalui skema pendanaan mandiri, internal perguruan tinggi, maupun sumber pendanaan eksternal: <br />1. Budi Hartanto, S.Kom, M.Kom  <br />2. Yustina Retno, S.T, M.Cs <br />3.  Sri Tomo, S.T, M.Kom <br />4. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />5. Dr. Ir. Muhammad Hasbi, M.Kom<br />Total kegiatan PkM pada bidang INFOKOM yang didanai pada tahun tersebut berjumlah 6 judul/kegiatan dengan rasio capaian sebesar 40%. Capaian ini menunjukkan tingkat produktivitas PkM yang sangat baik dibandingkan jumlah dosen yang ada.</p>\n<p>Pada TS-1 (2023), dari total 15 DTPR, sebanyak 4 dosen pada bidang INFOKOM melaksanakan kegiatan Pengabdian kepada Masyarakat (PkM) yang didanai melalui skema pendanaan mandiri, internal perguruan tinggi, maupun sumber pendanaan eksternal:<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Dwi Remawati, S.Kom, M.Kom<br />3. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />4. Bramasto Wiryawan Y, S.T, M.MSI<br />Total kegiatan PkM bidang INFOKOM yang didanai pada tahun tersebut berjumlah 6 judul/kegiatan. Total PkM yang dihasilkan pada tahun ini sebanyak 6 pada bidang INFOKOM dengan rasio capaian sebesar 35%. Capaian ini menunjukkan tingkat produktivitas PkM yang sangat baik dibandingkan jumlah dosen yang ada.</p>\n<p>Pada TS (2024), dari total 19 DTPR, sebanyak 5 dosen pada bidang INFOKOM melaksanakan kegiatan Pengabdian kepada Masyarakat (PkM) yang didanai melalui skema pendanaan mandiri, internal perguruan tinggi, maupun sumber pendanaan eksternal:<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Sri Hariyati Fitriasih, S.Kom, M.Kom <br />3. Sri Siswanti, S.Kom, M.Kom<br />4. Bramasto Wiryawan Y, S.T, M.MSI<br />5. Bayu Dwi Raharja, S.Kom, M.Kom<br />Total kegiatan PkM bidang INFOKOM yang didanai pada tahun tersebut berjumlah 6 judul/kegiatan. Total PkM yang dihasilkan pada tahun ini sebanyak 6 pada bidang INFOKOM dengan rasio capaian sebesar 32%. Capaian ini menunjukkan tingkat produktivitas PkM yang sangat baik dibandingkan jumlah dosen yang ada.</p>\n<p>Pada TS (2025), dari total 18 DTPR, sebanyak 6 dosen pada bidang INFOKOM melaksanakan kegiatan Pengabdian kepada Masyarakat (PkM) yang didanai melalui skema pendanaan mandiri, internal perguruan tinggi, maupun sumber pendanaan eksternal:<br />1. Hendro Wijayanto, S.Kom, M.Kom<br />2. Iwan Ady Prabowo, S.Kom, M.Kom<br />3.  Sri Tomo, S.T, M.Kom <br />4. Bebas Widada, S.Si., M.Kom <br />5. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />6. Wawan Laksito, S.Si, M.Kom<br />Total kegiatan PkM bidang INFOKOM yang didanai pada tahun tersebut berjumlah 6 judul/kegiatan. Total PkM yang dihasilkan pada tahun ini sebanyak 6 pada bidang INFOKOM dengan rasio capaian sebesar 33%. Capaian ini menunjukkan tingkat produktivitas PkM yang sangat baik dibandingkan jumlah dosen yang ada.</p>\n<p>Rata-rata rasio jumlah kegiatan PkM bidang INFOKOM terhadap jumlah DTPR per tahun adalah sebesar 35%.</p>',90,'2026-10-05 03:13:25','2026-10-11 08:53:58'),(85,1,'1.B','Ketersediaan dokumen bukti Pelaksanaan yang sesuai dengan Penetapan.','<p>Program Studi S1 Informatika secara konsisten mengimplementasikan budaya mutu melalui ketersediaan dokumen pelaksanaan yang selaras dengan standar dalam Sistem Penjaminan Mutu Internal (SPMI). Setiap kegiatan akademik dan nonakademik didukung oleh dokumen operasional, antara lain Rencana Pembelajaran Semester (RPS), jadwal perkuliahan, berita acara kegiatan, serta laporan penelitian dan pengabdian kepada masyarakat. Tata kelola program studi dilaksanakan berdasarkan Standar Operasional Prosedur (SOP) dan manual mutu yang terdokumentasi, sehingga seluruh proses memiliki pedoman yang jelas, terukur, dan terdokumentasi dengan baik.</p>\n<p>Pelayanan kepada mahasiswa terdokumentasi melalui catatan bimbingan akademik, laporan kegiatan kemahasiswaan, serta hasil tracer study yang menunjukkan keterkaitan antara implementasi standar mutu dengan kebutuhan mahasiswa dan alumni. Sumber daya program studi, baik dosen maupun sarana dan prasarana, didukung oleh dokumen inventarisasi, logbook penggunaan fasilitas, serta sertifikat pengembangan kompetensi dosen.</p>\n<p>Dalam pengelolaan akademik, Program Studi S1 Informatika memanfaatkan sistem informasi akademik berbasis aplikasi web (https://tsu.siakadcloud.com) sebagai sarana manajemen, pengelolaan, dan evaluasi proses pembelajaran. Peninjauan dan pengembangan kurikulum dilaksanakan secara berkala melalui kajian dan evaluasi bersama Unit Pengelola Program Studi (UPPS), Lembaga Penjaminan Mutu (LPM), dan Tim Kurikulum. Pelaksanaan pembelajaran oleh dosen pengampu dibuktikan melalui pemenuhan Laporan Beban Kinerja Dosen (LBKD) sesuai dengan ketentuan yang berlaku.</p>',90,'2026-10-06 09:47:49','2026-10-11 08:51:50'),(86,1,'1.C','Ketersediaan dokumen bukti Evaluasi.','<p>Evaluasi mencakup aspek akademik, tata kelola, layanan mahasiswa, serta pengelolaan sumber daya. Proses evaluasi dilaksanakan melalui monitoring rutin, Audit Mutu Internal (AMI), survei kepuasan, serta rapat evaluasi berkala. Hasil evaluasi didokumentasikan dalam bentuk laporan monitoring, laporan hasil audit, rekapitulasi capaian kinerja, serta rekomendasi tindak lanjut.</p>\n<p>Audit Mutu Internal (AMI) terhadap Program Studi S1 Informatika telah dilaksanakan oleh Lembaga Penjaminan Mutu (LPM). Dalam pelaksanaannya, LPM menugaskan tim auditor bersertifikat yang berasal dari dosen untuk melakukan audit atas pemenuhan standar mutu oleh program studi.</p>\n<p>Dokumen evaluasi pembelajaran dan monitoring perkuliahan terdokumentasi dalam sistem informasi akademik berbasis aplikasi web melalui https://tsu.siakadcloud.com.</p>',90,'2026-10-06 09:48:02','2026-10-11 08:52:06'),(87,1,'1.D','Ketersediaan dokumen bukti Pengendalian.','<p>Sebagai upaya pengendalian terhadap pemenuhan standar agar pelaksanaan kegiatan sesuai dengan ketentuan yang ditetapkan, setiap temuan dalam Audit Mutu Internal (AMI) disertai dengan usulan perbaikan yang harus ditindaklanjuti oleh program studi. Usulan tersebut merupakan hasil pembahasan antara auditor, audit, dan Lembaga Penjaminan Mutu (LPM). Tindak lanjut atas temuan tersebut terdokumentasi dalam Laporan AMI pada kolom Rencana Tindak Lanjut.</p>\n<p>Penanggung jawab pelaksanaan pengendalian adalah Ketua Program Studi dan Kepala Unit Pengelola Program Studi (UPPS). Hasil pelaksanaan tindak lanjut akan dimonitor kembali oleh LPM pada pelaksanaan AMI tahun 2026. Penetapan kebijakan, keputusan, dan tindakan korektif atas temuan audit dibahas dan disahkan melalui dokumen Rapat Tinjauan Manajemen (RTM) serta dituangkan dalam Rencana Tindak Lanjut (RTL).</p>',80,'2026-10-06 09:48:39','2026-10-11 08:52:17'),(88,1,'1.E','Ketersediaan dokumen bukti Peningkatan.','<p>Proses pelaksanaan PPEPP pada tahap Peningkatan dilaksanakan melalui pembahasan dalam Rapat Tinjauan Manajemen (RTM) sebagai forum evaluasi dan penetapan kebijakan strategis.</p>\n<p>1. Aspek Pembelajaran<br />Program Studi S1 Informatika telah melakukan penyelarasan Capaian Pembelajaran Lulusan (CPL) dan kurikulum agar selaras dengan visi dan misi Universitas Tiga Serangkai yang berorientasi pada penguatan kolaborasi dengan industri. Evaluasi Kurikulum 2023 menghasilkan pengembangan dan implementasi Kurikulum 2025 sebagai bentuk peningkatan mutu pembelajaran yang adaptif terhadap kebutuhan pemangku kepentingan.<br />Untuk memperkaya pengalaman belajar mahasiswa dan memastikan terjadinya transfer pengetahuan yang mutakhir, Program Studi S1 Informatika melakukan inovasi pada metode instruksional melalui penguatan kolaborasi akademik. Hal ini diwujudkan melalui penerapan skema team teaching yang melibatkan pengajar internasional  serta praktisi pakar dari industri teknologi informasi. Keterlibatan dosen internasional bertujuan untuk memberikan wawasan global dan standar akademik internasional, sementara dosen praktisi berperan dalam menjembatani kesenjangan antara teori akademik dengan kebutuhan nyata di dunia kerja.</p>\n<p>2. Aspek Sumber Daya Manusia<br />Dalam upaya peningkatan mutu, Program Studi S1 Informatika melakukan optimalisasi dan penguatan kinerja dosen homebase yang memiliki keilmuan di bidang Informatika dan Komputer (INFOKOM), khususnya dalam bidang pendidikan, penelitian, dan pengabdian kepada masyarakat. Peningkatan kinerja tersebut diwujudkan melalui penguatan publikasi ilmiah, keterlibatan dalam hibah penelitian dan pengabdian, serta pengembangan kompetensi akademik.<br />Pada tingkat fakultas, dilakukan penataan dan penguatan tenaga kependidikan untuk mendukung optimalisasi kinerja Unit Pengelola Program Studi (UPPS). Selain itu, dosen dan tenaga kependidikan secara aktif mengikuti program peningkatan kompetensi yang diselenggarakan oleh Kementerian Pendidikan Tinggi, Sains, dan Teknologi maupun lembaga terkait lainnya sebagai bagian dari pengembangan sumber daya manusia secara berkelanjutan.</p>',80,'2026-10-06 09:49:56','2026-10-11 08:52:30'),(89,2,'2.B','Rasio jumlah Dosen Penghitung Rasio yang mempunyai NUPTK terhadap jumlah mahasiswa aktif, sesuai data di PDDIKTI.','<p>Pada tahun 2024, Program Studi S1 Informatika memiliki 30 dosen tetap yang diperhitungkan dalam rasio dosen terhadap mahasiswa, dengan 19 dosen di antaranya memiliki keilmuan di bidang Informatika dan Komputer (INFOKOM). Jumlah mahasiswa pada tahun tersebut sebanyak 363 orang, sehingga rasio dosen terhadap mahasiswa adalah sebesar 1:12,1.</p>\n<p>Pada tahun 2025, jumlah dosen tetap yang diperhitungkan dalam rasio meningkat menjadi 34 orang, dengan 18 dosen memiliki keilmuan di bidang INFOKOM. Jumlah mahasiswa tercatat sebanyak 313 orang, sehingga rasio dosen terhadap mahasiswa membaik menjadi 1:9,21. Perbaikan rasio ini menunjukkan peningkatan kapasitas layanan akademik serta mendukung mutu proses pembelajaran yang lebih optimal.</p>',90,'2026-10-06 09:54:35','2026-10-11 08:50:26'),(90,2,'2.C','Persentase kualifikasi akademik Dosen Penghitung Rasio yang memiliki NUPTK yang bergelar Doktor/Doktor Terapan (bidang INFOKOM) terhadap jumlah Dosen Penghitung Rasio.','<p>Program Studi S1 Informatika memiliki 1 (satu) dosen bergelar Doktor (S3) yang sesuai dengan bidang keilmuan Informatika dan Komputer (INFOKOM), yaitu:<br />1. Dr. Ir. Muhammad Hasbi, M.Kom</p>\n<p>Selain itu, terdapat 2 (dua) dosen yang sedang menempuh pendidikan Doktoral Ilmu Komputer (S3) pada bidang yang relevan, yaitu:<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Dwi Remawati, S.Kom, M.Kom</p>\n<p>Ketersediaan dosen berkualifikasi doktor serta dosen yang sedang melanjutkan studi doktoral menunjukkan komitmen program studi dalam meningkatkan kualitas sumber daya manusia guna mendukung pelaksanaan Tri Dharma Perguruan Tinggi.</p>\n<p>Dosen bergelar Doktor bidang INFOKOM sejumlah satu orang dari sembilan belas DTPR, prosentase sama dengan 1/19 = 5,26%</p>',90,'2026-10-06 09:54:48','2026-10-11 08:50:36'),(91,2,'2.D','Jumlah Dosen Penghitung Rasio yang memiliki Jabatan Fungsional Akademik (Guru Besar, Lektor Kepala dan Lektor) yang mempunyai NUPTK saat TS.','<p>Pada TS (2024/2025)<br />Jumlah Dosen Tetap Program Studi (DTPR) sebanyak 19 dosen pada bidang INFOKOM yang telah memiliki jabatan fungsional akademik, mulai dari Lektor hingga Guru Besar, yang terdiri atas 13 dosen dengan jabatan Lektor Kepala sebanyak 3 orang, Lektor sebanyak 13 orang, dan Asisten Ahli 3 orang.   <br />Lektor (13):<br />1. Budi Hartanto, S.Kom, M.Kom<br />2. Didik Nugroho, S.Kom, M.Kom<br />3. Hendro Wijayanto, S.Kom, M.Kom<br />4. Iwan Ady Prabowo, S.Kom, M.Kom<br />5. Paulus Harsadi, S.Kom, M.Kom  <br />6. Yustina Retno, S.T, M.Cs <br />7.  Sri Tomo, S.T, M.Kom <br />8. Bebas Widada, S.Si., M.Kom <br />9. Dr. Didik Setiyadi, S.Kom, M.Kom<br />10. Dwi Remawati, S.Kom, M.Kom<br />11. Sri Hariyati Fitriasih, S.Kom, M.Kom<br />12. Sri Harjanto, S.Kom., M.Kom<br />13. Teguh Susyanto,S.Kom, M.Cs    <br />Lektor Kepala (3):<br />1. Sri Siswanti, S.Kom, M.Kom<br />2. Wawan Laksito, S.Si, M.Kom<br />3. Dr. Ir. Muhammad Hasbi, M.Kom</p>\n<p>Dari sejumlah DTPR sebanyak 19 dosen yang mempunyai jabatan Lektor adalah 13, Lektor Kepala 3 sehingga Guru Besar 0, sehingga prosentasenya = 16/19 = 84.21%.</p>',90,'2026-10-06 09:55:03','2026-10-11 08:50:45'),(92,2,'2.E','Persentase jumlah lulusan terhadap jumlah mahasiswa dalam 3 (tiga) tahun terakhir untuk Diploma, 4 (empat) tahun terakhir untuk Sarjana, 2 (lima) tahun terakhir untuk Magister, dan 3 (tiga) tahun terakhir untuk Doktor.','<p>Perhitungan indikator kelulusan dilakukan pada rentang TS sampai dengan TS-3, yaitu TS = 2024/2025, TS-1 = 2023/2024, TS-2 = 2022/2023, dan TS-3 = 2021/2022. Penghitungan didasarkan pada cohort mahasiswa baru yang masuk pada semester gasal tahun 2018, 2019, 2020, dan 2021. <br />Dari total 364 mahasiswa pada cohort tersebut, sebanyak 236 mahasiswa telah menyelesaikan studinya. <br />Dengan demikian, persentase kelulusan tercatat sebesar 236/364= 64,84%.</p>\n<p>Hasil ini menunjukkan bahwa tingkat kelulusan mahasiswa Program Studi Informatika masih memerlukan peningkatan. Oleh karena itu, program studi menempatkan capaian ini sebagai bagian dari agenda evaluasi akademik berkelanjutan. Tindak lanjut yang dilakukan mencakup penguatan fungsi dosen penasihat akademik dalam pembuatan smartplan mahasiswa, monitoring kemajuan studi, pendampingan perencanaan akademik yang lebih terstruktur, serta peningkatan koordinasi antara dosen PA, dosen pembimbing, dan mahasiswa. </p>',90,'2026-10-06 09:55:21','2026-10-11 08:50:53'),(93,2,'2.F','Persentase kelulusan tepat waktu  terhadap jumlah mahasiswa dalam 3 (tiga) tahun terakhir untuk Diploma, 4 (empat) tahun terakhir untuk Sarjana, 2 (lima) tahun terakhir untuk Magister, dan 3 (tiga) tahun terakhir untuk Doktor.','<p>Dengan perhitungan yang sama seperti pada poin e, jumlah mahasiswa pada cohort yang diamati tercatat sebanyak 364 orang, dengan 118 orang di antaranya lulus tepat waktu. Dengan demikian, persentase kelulusan tepat waktu adalah sebesar 118/364=37,40%.<br />Capaian ini menunjukkan bahwa tingkat kelulusan tepat waktu di Program Studi Informatika masih perlu ditingkatkan. Namun trend peningkatan lulusan tepat waktu dari 9% --&gt; 29% --&gt; 54% --&gt; 58% merupakan indikator keberhasilan manajemen program studi dalam melakukan intervensi akademik, baik melalui perbaikan kurikulum, efisiensi proses bimbingan tugas akhir, maupun monitoring progres mahasiswa secara berkala melalui Smart Plan Mahasiswa. Hal ini mencerminkan komitmen kuat institusi dalam memenuhi standar mutu nasional pendidikan tinggi.</p>',90,'2026-10-06 09:55:35','2026-10-11 08:51:00'),(94,3,'3.B','Rasio jumlah judul publikasi bidang INFOKOM terhadap jumlah DTPR per tahun.','<p>Pada TS-2 (2022), jumlah DTPR Program Studi S1 Informatika sebanyak 15 dosen. Dari jumlah tersebut, dosen bidang INFOKOM yang menghasilkan publikasi ilmiah adalah sebagai berikut: <br />1. Budi Hartanto, S.Kom, M.Kom  (1 publikasi)<br />2. Didik Nugroho, S.Kom, M.Kom (2 publikasi)<br />3. Hendro Wijayanto, S.Kom, M.Kom (1 publikasi)<br />4. Iwan Ady Prabowo, S.Kom, M.Kom (3 publikasi)<br />5. Paulus Harsadi, S.Kom, M.Kom  (4 publikasi)<br />6. Yustina Retno, S.T, M.Cs  (2 publikasi)<br />7. Bebas Widada, S.Si., M.Kom (1 publikasi)<br />8. Dwi Remawati, S.Kom, M.Kom (2 publikasi)<br />9. Sri Hariyati Fitriasih, S.Kom, M.Kom (4 publikasi)<br />10. Teguh Susyanto,S.Kom, M.Cs     (1 publikasi)<br />11. Sri Siswanti, S.Kom, M.Kom (6 publikasi)<br />12. Wawan Laksito, S.Si, M.Kom (3 publikasi)<br />13. Bramasto Wiryawan Y, S.T, M.MSI. (1 publikasi)<br />14. Setiyowati, S.Kom, M.Kom (1 publikasi)<br />Total publikasi yang dihasilkan pada tahun ini sebanyak 33 publikasi pada bidang INFOKOM dengan rasio capaian sebesar 220,00%. Capaian ini menunjukkan tingkat produktivitas publikasi yang sangat baik dibandingkan jumlah dosen yang ada.</p>\n<p>Pada TS-1 (2023), jumlah DTPR meningkat menjadi 17 dosen. Dosen bidang INFOKOM yang menghasilkan publikasi ilmiah adalah sebagai berikut:<br />1. Budi Hartanto, S.Kom, M.Kom (2 publikasi)<br />2. Didik Nugroho, S.Kom, M.Kom (3 publikasi)<br />3. Hendro Wijayanto, S.Kom, M.Kom (2 publikasi)<br />4. Iwan Ady Prabowo, S.Kom, M.Kom (4 publikasi)<br />5. Paulus Harsadi, S.Kom, M.Kom  (2 publikasi)<br />6. Yustina Retno, S.T, M.Cs (1 publikasi)<br />7.  Sri Tomo, S.T, M.Kom  (1 publikasi)<br />8. Bebas Widada, S.Si., M.Kom  (1 publikasi)<br />10. Dwi Remawati, S.Kom, M.Kom (4 publikasi)<br />11. Sri Hariyati Fitriasih, S.Kom, M.Kom (2 publikasi)  <br />12. Sri Siswanti, S.Kom, M.Kom (5 publikasi)<br />13. Dr. Ir. Muhammad Hasbi, M.Kom (4 publikasi)<br />14. Dziky Ridhwanullah, S.Kom., M.Kom. (1 publikasi)<br />Total publikasi yang dihasilkan sebanyak 32 publikasi pada bidang INFOKOM dengan rasio sebesar 188,24%. Hal ini menunjukkan peningkatan jumlah luaran publikasi dibandingkan tahun sebelumnya.</p>\n<p>Pada TS (2024), jumlah DTPR sebanyak 19 dosen. Dosen bidang INFOKOM yang menghasilkan publikasi adalah sebagai berikut:<br />1. Budi Hartanto, S.Kom, M.Kom (2 publikasi)<br />2. Didik Nugroho, S.Kom, M.Kom (1 publikasi)<br />3. Hendro Wijayanto, S.Kom, M.Kom (2 publikasi)<br />4. Iwan Ady Prabowo, S.Kom, M.Kom (3 publikasi)<br />5. Paulus Harsadi, S.Kom, M.Kom  (2 publikasi)<br />6. Yustina Retno, S.T, M.Cs  (2 publikasi)<br />7.  Sri Tomo, S.T, M.Kom (1 publikasi)<br />8. Bebas Widada, S.Si., M.Kom (3 publikasi)<br />9. Dr. Didik Setiyadi, S.Kom, M.Kom (4 publikasi)<br />10. Dwi Remawati, S.Kom, M.Kom (3 publikasi)<br />11. Sri Hariyati Fitriasih, S.Kom, M.Kom (2 publikasi) <br />12. Sri Siswanti, S.Kom, M.Kom (5 publikasi)<br />13. Wawan Laksito, S.Si, M.Kom (2 publikasi)<br />14. Dr. Ir. Muhammad Hasbi, M.Kom (3 publikasi)<br />15. Bayu Dwi Raharja, S.Kom, M.Kom. (1 publikasi)<br />16. Bramasto Wiryawan Y, S.T, M.MSI. (1 publikasi)<br />17. Dziky Ridhwanullah, S.Kom., M.Kom. (2 publikasi)<br />Total publikasi yang dihasilkan mencapai 39 publikasi pada bidang INFOKOM dengan rasio 205,26%. Peningkatan ini mencerminkan penguatan budaya riset dan publikasi di lingkungan program studi.</p>\n<p>Pada TS (2025), jumlah DTPR sebanyak 18 dosen. Dosen bidang INFOKOM yang menghasilkan publikasi adalah sebagai berikut:<br />1. Budi Hartanto, S.Kom, M.Kom (1 publikasi)<br />2. Didik Nugroho, S.Kom, M.Kom (2 publikasi)<br />3. Iwan Ady Prabowo, S.Kom, M.Kom  (5 publikasi)<br />4. Paulus Harsadi, S.Kom, M.Kom  (4 publikasi)<br />5. Yustina Retno, S.T, M.Cs  (1 publikasi)<br />6.  Sri Tomo, S.T, M.Kom  (1 publikasi)<br />7. Bebas Widada, S.Si., M.Kom  (2 publikasi)<br />8. Dr. Didik Setiyadi, S.Kom, M.Kom (5 publikasi)<br />9. Sri Hariyati Fitriasih, S.Kom, M.Kom (2 publikasi)   <br />10. Sri Siswanti, S.Kom, M.Kom (3 publikasi)<br />11. Wawan Laksito, S.Si, M.Kom (2 publikasi)<br />12. Dr. Ir. Muhammad Hasbi, M.Kom (1 publikasi)<br />13. Dziky Ridhwanullah, S.Kom., M.Kom. (1 publikasi) <br />Total publikasi yang dihasilkan sebanyak 26 publikasi pada bidang INFOKOM dengan rasio 144,44%. Capaian ini menunjukkan konsistensi produktivitas publikasi dosen dalam mendukung peningkatan mutu akademik dan reputasi program studi.</p>\n<p>Rata-rata rasio jumlah judul publikasi bidang INFOKOM terhadap jumlah DTPR per tahun adalah sebesar 189%</p>',90,'2026-10-06 09:57:17','2026-10-11 08:49:22'),(96,1,'Kepmen no 42 a o 2025 - Ijin Univ Tiga Serangkai','Kepmen no 42 a o 2025 - Ijin Univ Tiga Serangkai','<p>Perjalanan penyelenggaraan pendidikan di Program Studi S1 Informatika saat ini tidak terlepas dari tonggak sejarah penting terkait transformasi kelembagaan institusi kami. Berdasarkan Keputusan Menteri Pendidikan Tinggi, Sains, dan Teknologi Republik Indonesia Nomor 42/A/O/2025 yang ditetapkan pada tanggal 10 Januari 2025, pemerintah secara resmi telah memberikan izin penggabungan antara Sekolah Tinggi Manajemen Informatika dan Komputer (STMIK) Sinar Nusantara Surakarta dan Akademi Seni dan Desain Indonesia di Kota Surakarta<sup></sup>. Penggabungan kedua institusi tersebut melahirkan sebuah entitas pendidikan baru, yakni Universitas Tiga Serangkai di Kota Surakarta, Provinsi Jawa Tengah, yang diselenggarakan oleh Yayasan Aminah Abdullah<sup></sup>. </p>\n<p>Melalui ketetapan kementerian yang sama, Informatika Program Sarjana secara legal diakui sebagai salah satu program studi yang diselenggarakan secara resmi di bawah naungan Universitas Tiga Serangkai<sup></sup>. Keputusan Menteri ini juga memberikan landasan kepastian mutu dengan secara tegas menyatakan bahwa peringkat akreditasi program studi yang masih berlaku tetap dinyatakan sah setelah proses penggabungan<sup></sup>. </p>\n<p>Menindaklanjuti perubahan bentuk institusi tersebut, legalitas penjaminan mutu Program Studi S1 Informatika juga telah disesuaikan melalui Keputusan Lembaga Akreditasi Mandiri Informatika dan Komputer (LAM INFOKOM) Nomor: 020/SK/LAM-INFOKOM/Ak.PNB/S/VIII/2025<sup></sup>. Berdasarkan surat keputusan dari LAM INFOKOM tersebut, Program Studi Informatika Program Sarjana pada Universitas Tiga Serangkai secara sah menyandang peringkat terakreditasi \"<strong>Baik</strong>\" dengan perolehan nilai <strong>292</strong><sup></sup>. Masa berlaku pemeringkatan akreditasi ini ditetapkan efektif terhitung mulai tanggal 4 Agustus 2025 sampai dengan 28 Desember 2026<sup></sup>. </p>\n<p>Dalam momentum asesmen lapangan ini, kami di jajaran manajemen program studi berkomitmen penuh untuk terus mengawal sistem penjaminan mutu internal secara berkelanjutan. Legalitas kelembagaan dan status akreditasi yang telah kami raih ini menjadi pijakan yang kuat bagi kami untuk terus meningkatkan kualitas pelaksanaan tridarma perguruan tinggi demi menghasilkan lulusan Informatika yang unggul dan kompetitif.</p>',100,'2026-10-11 08:25:48','2026-10-11 08:25:48');
 /*!40000 ALTER TABLE `isi_kriteria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_batches`
+--
+
+DROP TABLE IF EXISTS `job_batches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_batches` (
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_jobs` int NOT NULL,
+  `pending_jobs` int NOT NULL,
+  `failed_jobs` int NOT NULL,
+  `failed_job_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `cancelled_at` int DEFAULT NULL,
+  `created_at` int NOT NULL,
+  `finished_at` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_batches`
+--
+
+LOCK TABLES `job_batches` WRITE;
+/*!40000 ALTER TABLE `job_batches` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_batches` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `jobs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` smallint unsigned NOT NULL,
+  `reserved_at` int unsigned DEFAULT NULL,
+  `available_at` int unsigned NOT NULL,
+  `created_at` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobs`
+--
+
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1210,6 +1351,60 @@ INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `password_reset_tokens`
+--
+
+DROP TABLE IF EXISTS `password_reset_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_reset_tokens`
+--
+
+LOCK TABLES `password_reset_tokens` WRITE;
+/*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sessions`
+--
+
+DROP TABLE IF EXISTS `sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sessions` (
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint unsigned DEFAULT NULL,
+  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sessions`
+--
+
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` VALUES ('7R9dZRpEasX6WwtWEPnSu46JicIL6pUsjb0vosJf',NULL,'103.51.204.174','WhatsApp/2.23.20.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiS2xxaFRnMW5jMlJRN25uMXM0UWZib2lBTmdIRDFBUVVsZmhpN2VMTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHBzOi8vaW5mb3JtYXRpa2EudHN1YWtyZWRpdGFzaS5teS5pZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1791684553),('Db3A0WH176zq36n04q5yRv4HPlhUzXd5Mc5dWgPa',1,'103.51.204.174','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQWZVOHhBdkI5RzRCS3ZlN0wxbktBR1RvRXpTazh1Rk1ydFhPcGx6OCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHBzOi8vaW5mb3JtYXRpa2EudHN1YWtyZWRpdGFzaS5teS5pZC9rcml0ZXJpYSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1791684788),('tZlhJQOQ1qaKXOztsEnILyjtUtXJ6fp2EpDFAmsd',NULL,'165.101.24.5','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaVZJTTBjRUY0a1c4Z3hiR0RxaVJsMVFweEhBQmdQU3dBV3NpTjVuRiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHBzOi8vaW5mb3JtYXRpa2EudHN1YWtyZWRpdGFzaS5teS5pZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1791687250),('xh0cF8KHSNggXKEISdnkTcbgG5uZKMoYoPHhqluP',NULL,'165.101.24.5','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiM2s1WmplSEI0UXM3Smt5ckFnVkptSjhBZ3d0aWZQRnNURGJ5UGowUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHBzOi8vaW5mb3JtYXRpa2EudHN1YWtyZWRpdGFzaS5teS5pZC9rcml0ZXJpYS8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1791696772);
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -1239,163 +1434,14 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'Administrator','admininf@tsu.ac.id',NULL,'$2y$12$WEjQ7VxdrC/vp/O1kJ7VauQ.OPNfeUskd5vVgNhm0B8UPcYUAdeiO','0qo69YvAZXPNg7i6wQvtFSybVDmeHJIRMOguxziSpp1rXOH5VoH53VTP2vyh','2026-10-05 01:37:21','2026-10-06 08:40:10'),(2,'Program Studi','informatika@tsu.ac.id',NULL,'$2y$12$/yvlRIOC97UCtrjItjl5Teo3w33aECM8lsxhXzGluVIFYUizozdjO','zh49eBEHT6kYtvdulAOuFHZlRhvK1plrGD1Lt3TTSYPgR1lfeTzoHDRmery5','2026-10-06 00:14:14','2026-10-07 01:20:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed
--- MySQL dump 10.13  Distrib 8.4.11, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: akreditasiinf
--- ------------------------------------------------------
--- Server version	8.4.11-0ubuntu0.26.04.1
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cache`
+-- Dumping events for database 'akreditasiinf'
 --
 
-DROP TABLE IF EXISTS `cache`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cache` (
-  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` bigint NOT NULL,
-  PRIMARY KEY (`key`),
-  KEY `cache_expiration_index` (`expiration`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Table structure for table `cache_locks`
+-- Dumping routines for database 'akreditasiinf'
 --
-
-DROP TABLE IF EXISTS `cache_locks`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cache_locks` (
-  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` bigint NOT NULL,
-  PRIMARY KEY (`key`),
-  KEY `cache_locks_expiration_index` (`expiration`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `failed_jobs`
---
-
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`),
-  KEY `failed_jobs_connection_queue_failed_at_index` (`connection`,`queue`,`failed_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `job_batches`
---
-
-DROP TABLE IF EXISTS `job_batches`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `job_batches` (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_jobs` int NOT NULL,
-  `pending_jobs` int NOT NULL,
-  `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `cancelled_at` int DEFAULT NULL,
-  `created_at` int NOT NULL,
-  `finished_at` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `jobs`
---
-
-DROP TABLE IF EXISTS `jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attempts` smallint unsigned NOT NULL,
-  `reserved_at` int unsigned DEFAULT NULL,
-  `available_at` int unsigned NOT NULL,
-  `created_at` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `jobs_queue_index` (`queue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `password_reset_tokens`
---
-
-DROP TABLE IF EXISTS `password_reset_tokens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `sessions`
---
-
-DROP TABLE IF EXISTS `sessions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sessions` (
-  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_user_id_index` (`user_id`),
-  KEY `sessions_last_activity_index` (`last_activity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
